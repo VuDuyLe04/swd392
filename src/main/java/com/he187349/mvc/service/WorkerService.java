@@ -75,13 +75,11 @@ public class WorkerService {
             workerRepo.update(worker);
 
             SalaryHistory history = new SalaryHistory(
-                    worker.getCode(),
-                    worker.getName(),
+                    worker,
                     worker.getAge(),
                     worker.getSalary(),
                     status,
-                    LocalDateTime.now()
-            );
+                    LocalDateTime.now());
             historyRepo.save(history);
 
             em.getTransaction().commit();

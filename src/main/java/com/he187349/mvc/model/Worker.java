@@ -72,4 +72,15 @@ public class Worker {
     public void setWorkLocation(String workLocation) {
         this.workLocation = workLocation;
     }
+
+    @OneToOne(mappedBy = "worker", cascade = CascadeType.ALL, orphanRemoval = true)
+    private SalaryHistory salaryHistory;
+
+    public SalaryHistory getSalaryHistory() {
+        return salaryHistory;
+    }
+
+    public void setSalaryHistory(SalaryHistory salaryHistory) {
+        this.salaryHistory = salaryHistory;
+    }
 }

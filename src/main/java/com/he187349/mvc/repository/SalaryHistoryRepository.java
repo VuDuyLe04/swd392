@@ -19,8 +19,8 @@ public class SalaryHistoryRepository {
 
     public List<SalaryHistory> findAllOrderByWorkerCode() {
         return em.createQuery(
-                        "SELECT s FROM SalaryHistory s ORDER BY s.workerCode, s.changeDate",
-                        SalaryHistory.class)
+                "SELECT s FROM SalaryHistory s ORDER BY s.worker.code, s.changeDate",
+                SalaryHistory.class)
                 .getResultList();
     }
 }

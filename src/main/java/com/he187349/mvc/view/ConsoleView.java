@@ -41,9 +41,11 @@ public class ConsoleView {
         System.out.printf("%-10s %-15s %-5s %-12s %-8s %-20s%n",
                 "Code", "Name", "Age", "Salary", "Status", "Date");
         for (SalaryHistory h : list) {
+            String code = (h.getWorker() != null) ? h.getWorker().getCode() : "";
+            String name = (h.getWorker() != null) ? h.getWorker().getName() : "";
             System.out.printf("%-10s %-15s %-5d %-12.2f %-8s %-20s%n",
-                    h.getWorkerCode(),
-                    h.getWorkerName(),
+                    code,
+                    name,
                     h.getAge(),
                     h.getSalaryAfter(),
                     h.getStatus(),
