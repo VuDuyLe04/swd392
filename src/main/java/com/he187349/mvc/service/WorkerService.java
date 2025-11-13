@@ -74,13 +74,26 @@ public class WorkerService {
             worker.setSalary(newSalary);
             workerRepo.update(worker);
 
-            SalaryHistory history = new SalaryHistory(
-                    worker,
-                    worker.getAge(),
-                    worker.getSalary(),
-                    status,
-                    LocalDateTime.now());
-            historyRepo.save(history);
+            // Find existing salary history for this worker
+            SalaryHistory history = historyRepo.findByWorkerCode(code);
+
+            if (history == null) {
+                // If no history exists, create new one
+                history = new SalaryHistory(
+                        worker,
+                        worker.getAge(),
+                        worker.getSalary(),
+                        status,
+                        LocalDateTime.now());
+                historyRepo.save(history);
+            } else {
+                // If history exists, update it
+                history.setAge(worker.getAge());
+                history.setSalaryAfter(worker.getSalary());
+                history.setStatus(status);
+                history.setChangeDate(LocalDateTime.now());
+                // No need to call save() for updates - JPA will manage it
+            }
 
             em.getTransaction().commit();
             return true;

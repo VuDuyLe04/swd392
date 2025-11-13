@@ -58,15 +58,31 @@ public class SalaryHistory {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public double getSalaryAfter() {
         return salaryAfter;
+    }
+
+    public void setSalaryAfter(double salaryAfter) {
+        this.salaryAfter = salaryAfter;
     }
 
     public SalaryStatus getStatus() {
         return status;
     }
 
+    public void setStatus(SalaryStatus status) {
+        this.status = status;
+    }
+
     public LocalDateTime getChangeDate() {
         return changeDate;
+    }
+
+    public void setChangeDate(LocalDateTime changeDate) {
+        this.changeDate = changeDate;
     }
 }
