@@ -12,8 +12,6 @@ public class SalaryHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // worker reference stored via the OneToOne relation (column: worker_code)
-
     @Column(nullable = false)
     private int age;
 
@@ -50,9 +48,6 @@ public class SalaryHistory {
     public Long getId() {
         return id;
     }
-
-    // removed getWorkerCode() and getWorkerName(); use
-    // getWorker().getCode()/getName()
 
     public int getAge() {
         return age;
